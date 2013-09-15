@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <form method="POST" action= "/auth" >{% csrf_token %}
+
+
+
+        <p>-> <input type="text" name="username"></p>
+        <p>--> </p>
+
+        <p>-> <input type="password" name="password"></p>
+        <p>--> </p>
+
+        <input type="submit" value="Login"/>
+    </form>
+</body>
+</html>

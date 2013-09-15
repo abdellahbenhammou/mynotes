@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<p>The form</p>
+<form method="post" name="register" action="/register" >{% csrf_token %}
+    <label for="username">Username: </label><input name="username" type="text" id="username" required="required"/><br/>
+    <label for="email">Email: </label><input name="email" type="email" id="email" required="required"/><br/>
+    <label for="password">Password: </label><input name="password" type="password" id="password" min="6" required="required"/><br/>
+    <button type="submit">Submit</button>
+</form>
+<script>
+    $.ajax({
+        url: "/addnote",
+        context: document.body
+    }).done(function(){
+                $(this).
+            })
+
+
+</script>
+</body>
+</html>

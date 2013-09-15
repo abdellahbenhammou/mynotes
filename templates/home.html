@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyNotes</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<b>This the home Page</b><br/>
+{% if user.is_authenticated %}
+<p>{{ username }}'s Profile</p>
+<div id="content" style="margin-left: auto; margin-right: auto; width: 450px; border: 1px solid red;">
+
+
+    <form method="post" id="addnote_form" name= "addnote" >
+        {% csrf_token %}
+        <input type="text" name="note" id="note" required="required"/>
+        <input type="submit" value="add"/>
+    </form>
+    <span id="notes"></span>
+    {% for n in notes %}
+        <div id="row{{ n.id }}"  style="height: 40px; border: solid 1px grey; padding-top: 5px;">- {{ n.note }}
+        <a id="{{ n.id }}" href="/deletenote" class="delete_note" style="float: right;"><img id="delete_note_"  alt="{{ n.id }}" src="/static/delete.png"/></a>
+        </div>
+    {% endfor %}
+
+    <a href="/logout">Logout </a>
+{% else %}
+    <a href="/login">Login - </a><a href="/registration" >Register</a>
+{% endif %}
+
+</div>
+<script>
+    /* attach a submit handler to the form */
+    function validate(){
+        var note = document.addnote.note.value;
+        if(note.length == 0){
+            alert('empty note');
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    $('.delete_note').click(function() { // catch the form's submit event
+        var note_id = $(this).attr('id');
+        var link = $(this).attr('href');
+        //alert("the data: "+note_id + " link: "+link);
+        $.ajax({ // create an AJAX call...
+            data: {'data': note_id}, // get the form data
+            type: 'GET', // GET or POST
+            url: '/deletenote', // the file to cal
+            success: function(response) { // on success..
+                var n = jQuery.parseJSON(response);
+                //alert('response: '+ n.note);
+                if(n.note == "none"){
+                    //alert('not deleted');
+                }
+                else{
+                    //alert('this is it: row'+ n.note);
+                    $("#row"+ n.note).fadeOut(300, function(){$("#row"+ n.note).remove();});
+                }
+                //$("#notes").append("<p>- "+n.note +"</p>");
+                //$("#note").val("");
+            },
+            error: function(){
+                alert('not deleted');
+            }
+        });
+        return false;
+    });
+
+    $(document).ready(function() {
+        $('#addnote_form').submit(function() { // catch the form's submit event
+            $.ajax({ // create an AJAX call...
+                data: $(this).serialize(), // get the form data
+                type: 'POST', // GET or POST
+                url: '/addnote', // the file to cal
+                success: function(response) { // on success..
+                    var n = jQuery.parseJSON(response);
+                    //alert(n.note);
+                    $("#notes").append("<div id='row"+ n.id+"'"+" style=' height: 40px; border: solid 1px grey; padding-top: 5px;'>-"+n.note
+                    +"<a id="+n.id+" href='/deletenote' class='delete_note' style='float: right;'><img id='delete_note_'  alt=' n.id '" +
+                            " src='/static/delete.png'/></a></div>");
+                    $("#row"+ n.id).show('slow');
+
+                    $("#note").val("");
+                    $(this).reload();
+
+                }
+            });
+            return false;
+        });
+
+        $('.delete_note').click(function() { // catch the form's submit event
+            var note_id = $(this).attr('id');
+            var link = $(this).attr('href');
+            //alert("the data: "+note_id + " link: "+link);
+            $.ajax({ // create an AJAX call...
+                data: {'data': note_id}, // get the form data
+                type: 'GET', // GET or POST
+                url: '/deletenote', // the file to cal
+                success: function(response) { // on success..
+                    var n = jQuery.parseJSON(response);
+                    //alert('response: '+ n.note);
+                    if(n.note == "none"){
+                        //alert('not deleted');
+                    }
+                    else{
+                        //alert('this is it: row'+ n.note);
+                        $("#row"+ n.note).fadeOut(300, function(){$("#row"+ n.note).remove();});
+                    }
+                    //$("#notes").append("<p>- "+n.note +"</p>");
+                    //$("#note").val("");
+                },
+                error: function(){
+                    alert('not deleted');
+                }
+            });
+            return false;
+        });
+
+    });
+   /* $("#addnote_form").submit(function(event) {
+
+        var note = document.getElementById("#note").value;
+
+
+        event.preventDefault();
+
+
+        var $form = $( this ),
+                term = $form.find( 'input[name="note"]' ).val(),
+                token = $form.find('input[name=csrfmiddlewaretoken"]')
+                url = $form.attr( 'action' );
+
+
+
+        var posting = $.post( url, { "note": term, "csrfmiddlewaretoken":token } );
+
+
+        posting.done(function( data ) {
+            var errors = "{{ error }}";
+            if (errors.length != 0){
+                alert(errors);
+            }
+
+            var content_1 = {{ notes }}
+            $( "#result" ).empty().append( errors );
+        });
+    });*/
+</script>
+
+</body>
+</html>
