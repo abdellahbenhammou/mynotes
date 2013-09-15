@@ -5,9 +5,9 @@
     <ignored path="myNotes.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/models.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1378765921376" ignored="false" />
-    <file path="/views.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379207228486" ignored="false" />
+    <file path="/views.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379285441234" ignored="false" />
     <file path="/Dummy.txt" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1378765664464" ignored="false" />
-    <file path="/home.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379235100866" ignored="false" />
+    <file path="/home.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379285685119" ignored="false" />
     <file path="/urls.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379206811515" ignored="false" />
     <file path="/registration.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379036306729" ignored="false" />
     <file path="/settings.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379197993920" ignored="false" />
@@ -16,6 +16,10 @@
     <file path="/notin.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1378920623041" ignored="false" />
     <file path="/forms.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1378896392638" ignored="false" />
     <file path="/logout.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1378929620376" ignored="false" />
+    <file path="/a.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379260652494" ignored="false" />
+    <file path="/start_script.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379260683455" ignored="false" />
+    <file path="/index.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379277050114" ignored="false" />
+    <file path="/layout.css" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379285559950" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +48,16 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myNotesBackend/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="18" selection-start="4717" selection-end="4717" vertical-scroll-proportion="0.0">
+            <state line="18" column="67" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myNotesBackend/static/layout.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="211" column="8" selection-start="4215" selection-end="4215" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -53,7 +66,20 @@
       <file leaf-file-name="home.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="26" selection-start="3362" selection-end="3362" vertical-scroll-proportion="0.7297297">
+            <state line="184" column="51" selection-start="6610" selection-end="6610" vertical-scroll-proportion="0.36235955">
+              <folding>
+                <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Desktop/mynotes/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="67" column="0" selection-start="2182" selection-end="2182" vertical-scroll-proportion="-2.0">
               <folding />
             </state>
           </provider>
@@ -80,7 +106,7 @@
       <file leaf-file-name="registration.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/registration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="66" selection-start="54" selection-end="116" vertical-scroll-proportion="0.0">
+            <state line="4" column="66" selection-start="54" selection-end="116" vertical-scroll-proportion="-2.6153846">
               <folding />
             </state>
           </provider>
@@ -115,16 +141,18 @@
         <option value="$PROJECT_DIR$/templates/registration.html" />
         <option value="$PROJECT_DIR$/myNotes/settings.py" />
         <option value="$PROJECT_DIR$/myNotes/urls.py" />
+        <option value="$USER_HOME$/Desktop/mynotes/index.html" />
         <option value="$PROJECT_DIR$/myNotesBackend/views.py" />
+        <option value="$PROJECT_DIR$/myNotesBackend/static/layout.css" />
         <option value="$PROJECT_DIR$/templates/home.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1364" />
+    <option name="height" value="766" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -239,7 +267,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="pyconsole" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -247,7 +275,10 @@
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
-      <PyConsoleSettings />
+      <PyConsoleSettings>
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="myNotes" />
+      </PyConsoleSettings>
     </option>
     <option name="myDjangoConsoleState">
       <PyConsoleSettings />
@@ -255,6 +286,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Abdellah Backup\Abdellah\myNotes\myNotesBackend\static" />
       <recent name="D:\Abdellah Backup\Abdellah\myNotes\media" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -401,18 +433,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="0" />
-    <editor active="false" />
+    <frame x="1" y="1" width="1364" height="766" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.6937799" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18636364" sideWeight="0.6937799" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18586789" sideWeight="0.6945813" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39872408" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30622008" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30541873" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -481,27 +513,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/registration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="66" selection-start="54" selection-end="116" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myNotes/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="53" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="57" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="0" selection-start="2211" selection-end="2211" vertical-scroll-proportion="0.3325359" />
@@ -531,7 +542,9 @@
     </entry>
     <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-762174762/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3310" column="8" selection-start="112786" selection-end="112786" vertical-scroll-proportion="0.33163264" />
+        <state line="3310" column="8" selection-start="112786" selection-end="112786" vertical-scroll-proportion="0.33163264">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/forms.py">
@@ -542,13 +555,6 @@
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="57" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/registration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="66" selection-start="54" selection-end="116" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -567,17 +573,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="66" selection-start="54" selection-end="116" vertical-scroll-proportion="-2.6153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myNotesBackend/static/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/mynotes/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="0" selection-start="2182" selection-end="2182" vertical-scroll-proportion="-2.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/myNotesBackend/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="18" selection-start="4717" selection-end="4717" vertical-scroll-proportion="0.0">
+        <state line="18" column="67" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myNotesBackend/static/layout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="211" column="8" selection-start="4215" selection-end="4215" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="26" selection-start="3362" selection-end="3362" vertical-scroll-proportion="0.7297297">
-          <folding />
+        <state line="184" column="51" selection-start="6610" selection-end="6610" vertical-scroll-proportion="0.36235955">
+          <folding>
+            <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -16,7 +16,7 @@ import re
 def home(request):
     if request.user.is_authenticated():
         print 'in'
-        notes = Notes.objects.filter(user=request.user)
+        notes = Notes.objects.filter(user=request.user).order_by('-date')
         return render_to_response("home.html",{'username': request.user.username, 'notes': notes}, context_instance=RequestContext(request))
     else:
         print 'not in'

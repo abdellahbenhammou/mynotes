@@ -3,32 +3,100 @@
 <head>
     <title>MyNotes</title>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>My Notes</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <!-- <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/skeleton.css"> -->
+    <link rel="stylesheet" href="/static/layout.css">
+
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/apple-touch-icon-114x114.png">
 </head>
 <body>
+
+<div class="band header">
+
+    <header>
+        <div class="logo-container"><h1>The Logo</h1></div>
+        <div class="search-container">
+            <form action="" method="" id="search-form">
+                <label for="search-input">Search</label>
+                <input type="text" name="s" id="search-input" placeholder="look for my notes">
+                <input type="submit" value="search" id="search-submit">
+            </form>
+        </div>
+        <div class="clearfix"></div>
+    </header>
+</div><!-- end band header -->
 <b>This the home Page</b><br/>
 {% if user.is_authenticated %}
-<p>{{ username }}'s Profile</p>
-<div id="content" style="margin-left: auto; margin-right: auto; width: 450px; border: 1px solid red;">
-
-
+<p style="display: inline">{{ username }}'s Profile</p>
     <form method="post" id="addnote_form" name= "addnote" >
-        {% csrf_token %}
-        <input type="text" name="note" id="note" required="required"/>
-        <input type="submit" value="add"/>
-    </form>
-    <span id="notes"></span>
-    {% for n in notes %}
-        <div id="row{{ n.id }}"  style="height: 40px; border: solid 1px grey; padding-top: 5px;">- {{ n.note }}
-        <a id="{{ n.id }}" href="/deletenote" class="delete_note" style="float: right;"><img id="delete_note_"  alt="{{ n.id }}" src="/static/delete.png"/></a>
-        </div>
-    {% endfor %}
+    {% csrf_token %}
+    <input type="text" name="note" id="note" required="required"/>
+    <input type="submit" value="add"/>
+</form>
+    <div class="band section">
 
+    <nav class="navigation">
+        <h1>By Tags</h1>
+        <ul>
+            <li class="selected"><a href="#">#Probability</a></li>
+            <li><a href="#">#Android</a></li>
+            <li><a href="#">#Capstone</a></li>
+            <li><a href="#">#Marketing</a></li>
+            <li><a href="#">#Idea</a></li>
+            <li><a href="#">#Networks</a></li>
+        </ul>
+    </nav>
+<div id="content">
+
+
+
+
+    <section class="main-notes">
+        <span id="notes"></span>
+        {% for n in notes %}
+        <div id="row{{ n.id }}" class="note transparent"><p style="display: inline">{{ n.note }}</p><a href="#" id="{{ n.id }}" class="delete_note" style="float: right;"><img class="delete_note"  data-id="{{ n.id }}" src="/static/delete.png"/></a></div>
+        {% endfor %}
+    </section>
+
+
+
+</div>
     <a href="/logout">Logout </a>
 {% else %}
-    <a href="/login">Login - </a><a href="/registration" >Register</a>
+<a href="/login">Login - </a><a href="/registration" >Register</a>
 {% endif %}
 
 </div>
+<div class="band footer">
+
+    <footer>
+        <p>2013 &copy; MyNotes. All Right Reserved</p>
+    </footer>
+
+</div><!-- end band footer -->
 <script>
     /* attach a submit handler to the form */
     function validate(){
@@ -41,9 +109,14 @@
             return true;
         }
     }
-    $('.delete_note').click(function() { // catch the form's submit event
+
+    console.log($("#content"));
+
+    $("body").on("click", "a", function(evt) { // catch the form's submit event
+
         var note_id = $(this).attr('id');
         var link = $(this).attr('href');
+        console.log("hello: " + note_id +" and: " + link);
         //alert("the data: "+note_id + " link: "+link);
         $.ajax({ // create an AJAX call...
             data: {'data': note_id}, // get the form data
@@ -53,7 +126,7 @@
                 var n = jQuery.parseJSON(response);
                 //alert('response: '+ n.note);
                 if(n.note == "none"){
-                    //alert('not deleted');
+                    alert('not deleted');
                 }
                 else{
                     //alert('this is it: row'+ n.note);
@@ -66,11 +139,13 @@
                 alert('not deleted');
             }
         });
-        return false;
+
+        evt.preventDefault();
+
     });
 
     $(document).ready(function() {
-        $('#addnote_form').submit(function() { // catch the form's submit event
+        $('#addnote_form').submit(function(evt) { // catch the form's submit event
             $.ajax({ // create an AJAX call...
                 data: $(this).serialize(), // get the form data
                 type: 'POST', // GET or POST
@@ -78,20 +153,20 @@
                 success: function(response) { // on success..
                     var n = jQuery.parseJSON(response);
                     //alert(n.note);
-                    $("#notes").append("<div id='row"+ n.id+"'"+" style=' height: 40px; border: solid 1px grey; padding-top: 5px;'>-"+n.note
-                    +"<a id="+n.id+" href='/deletenote' class='delete_note' style='float: right;'><img id='delete_note_'  alt=' n.id '" +
+                    $("#notes").append("<div id='row"+ n.id+"'"+" class='note transparent' style='display: none'><p style='display: inline'>"+n.note
+                            +"</p><a id="+n.id+" href='#' class='delete_note' style='float: right;'><img class='delete_note' data-id='{{ n.id }}' alt=' n.id '" +
                             " src='/static/delete.png'/></a></div>");
-                    $("#row"+ n.id).show('slow');
+
+                    $("#row"+ n.id).slideDown();
 
                     $("#note").val("");
-                    $(this).reload();
 
                 }
             });
-            return false;
+            evt.preventDefault();
         });
 
-        $('.delete_note').click(function() { // catch the form's submit event
+        $('.delete_note').click(function(evt) { // catch the form's submit event
             var note_id = $(this).attr('id');
             var link = $(this).attr('href');
             //alert("the data: "+note_id + " link: "+link);
@@ -107,7 +182,7 @@
                     }
                     else{
                         //alert('this is it: row'+ n.note);
-                        $("#row"+ n.note).fadeOut(300, function(){$("#row"+ n.note).remove();});
+                        $("#row"+ n.note).fadeOut(600, function(){$("#row"+ n.note).remove();});
                     }
                     //$("#notes").append("<p>- "+n.note +"</p>");
                     //$("#note").val("");
@@ -116,39 +191,11 @@
                     alert('not deleted');
                 }
             });
-            return false;
+            evt.preventDefault();
         });
 
     });
-   /* $("#addnote_form").submit(function(event) {
 
-        var note = document.getElementById("#note").value;
-
-
-        event.preventDefault();
-
-
-        var $form = $( this ),
-                term = $form.find( 'input[name="note"]' ).val(),
-                token = $form.find('input[name=csrfmiddlewaretoken"]')
-                url = $form.attr( 'action' );
-
-
-
-        var posting = $.post( url, { "note": term, "csrfmiddlewaretoken":token } );
-
-
-        posting.done(function( data ) {
-            var errors = "{{ error }}";
-            if (errors.length != 0){
-                alert(errors);
-            }
-
-            var content_1 = {{ notes }}
-            $( "#result" ).empty().append( errors );
-        });
-    });*/
 </script>
-
 </body>
 </html>
