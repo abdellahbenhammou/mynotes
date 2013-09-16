@@ -61,12 +61,9 @@
     <nav class="navigation">
         <h1>By Tags</h1>
         <ul>
-            <li class="selected"><a href="#">#Probability</a></li>
-            <li><a href="#">#Android</a></li>
-            <li><a href="#">#Capstone</a></li>
-            <li><a href="#">#Marketing</a></li>
-            <li><a href="#">#Idea</a></li>
-            <li><a href="#">#Networks</a></li>
+            {% for t in notes %}
+            <li class="selected"><a href="#">#{{ t.tags }}</a></li>
+            {% endfor %}
         </ul>
     </nav>
 <div id="content">
@@ -77,7 +74,7 @@
     <section class="main-notes">
         <span id="notes"></span>
         {% for n in notes %}
-        <div id="row{{ n.id }}" class="note transparent"><p style="display: inline">{{ n.note }}</p><a href="#" id="{{ n.id }}" class="delete_note" style="float: right;"><img class="delete_note"  data-id="{{ n.id }}" src="/static/delete.png"/></a></div>
+        <div id="row{{ n.id }}" class="note transparent"><p class="one_note" style="display: inline">{{ n.note }}</p><a href="#" id="{{ n.id }}" class="delete_note" style="float: right;"><img class="delete_note_"  data-id="{{ n.id }}" src="/static/delete.png"/></a></div>
         {% endfor %}
     </section>
 
@@ -109,10 +106,16 @@
             return true;
         }
     }
+    $(".band section").on("click", ".one_note", function(evt) {
 
-    console.log($("#content"));
+            console.log($(this));
 
-    $("body").on("click", "a", function(evt) { // catch the form's submit event
+
+
+    });
+
+
+    $(".band section").on("click", ".delete_note", function(evt) { // catch the form's submit event
 
         var note_id = $(this).attr('id');
         var link = $(this).attr('href');
@@ -145,6 +148,9 @@
     });
 
     $(document).ready(function() {
+
+
+
         $('#addnote_form').submit(function(evt) { // catch the form's submit event
             $.ajax({ // create an AJAX call...
                 data: $(this).serialize(), // get the form data
@@ -153,8 +159,8 @@
                 success: function(response) { // on success..
                     var n = jQuery.parseJSON(response);
                     //alert(n.note);
-                    $("#notes").append("<div id='row"+ n.id+"'"+" class='note transparent' style='display: none'><p style='display: inline'>"+n.note
-                            +"</p><a id="+n.id+" href='#' class='delete_note' style='float: right;'><img class='delete_note' data-id='{{ n.id }}' alt=' n.id '" +
+                    $("#notes").append("<div id='row"+ n.id+"'"+" class='note transparent' style='display: none'><p class='one_note' style='display: inline'>"+n.note
+                            +"</p><a id="+n.id+" href='#' class='delete_note' style='float: right;'><img class='delete_note_' data-id='{{ n.id }}' alt=' n.id '" +
                             " src='/static/delete.png'/></a></div>");
 
                     $("#row"+ n.id).slideDown();

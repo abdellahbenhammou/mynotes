@@ -100,10 +100,21 @@ def addnote(request):
             for i in l:
                 print 'tag: ' + str(i)
                 tags = tags + str(i) + ','
-
-
+            #note = re.sub(r'#(\w+)', r'<a href="test/\1">\2</a>', note)
+            #   print 'heeere: ' + re.sub(r"#(\w+)", r'<a href="test/\1">\2</a>', note)
+            print 'this is the new note: ' + note
             #tags = note.sp
             time = datetime.datetime.now()
+
+            l = note.split()
+            for i in l:
+                if '#' in i:
+                    j = '<a id="tag" href="test/t="'+i+'>'+i+'</a>'
+                    #print j
+                    note = note.replace(i, j)
+                #print note
+            print note
+
             new_note = Notes.objects.create(note=note, date=time, user=request.user, tags=tags)
             c = {}
             c.update(csrf(request))

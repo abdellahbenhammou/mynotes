@@ -5,9 +5,9 @@
     <ignored path="myNotes.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/models.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1378765921376" ignored="false" />
-    <file path="/views.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379285441234" ignored="false" />
+    <file path="/views.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379339916891" ignored="false" />
     <file path="/Dummy.txt" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1378765664464" ignored="false" />
-    <file path="/home.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379285685119" ignored="false" />
+    <file path="/home.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379340070945" ignored="false" />
     <file path="/urls.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379206811515" ignored="false" />
     <file path="/registration.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379036306729" ignored="false" />
     <file path="/settings.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379197993920" ignored="false" />
@@ -48,16 +48,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myNotesBackend/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="67" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myNotesBackend/static/layout.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="211" column="8" selection-start="4215" selection-end="4215" vertical-scroll-proportion="0.0">
+            <state line="19" column="96" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -66,7 +57,7 @@
       <file leaf-file-name="home.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="51" selection-start="6610" selection-end="6610" vertical-scroll-proportion="0.36235955">
+            <state line="64" column="55" selection-start="2309" selection-end="2309" vertical-scroll-proportion="0.4747191">
               <folding>
                 <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -142,8 +133,8 @@
         <option value="$PROJECT_DIR$/myNotes/settings.py" />
         <option value="$PROJECT_DIR$/myNotes/urls.py" />
         <option value="$USER_HOME$/Desktop/mynotes/index.html" />
-        <option value="$PROJECT_DIR$/myNotesBackend/views.py" />
         <option value="$PROJECT_DIR$/myNotesBackend/static/layout.css" />
+        <option value="$PROJECT_DIR$/myNotesBackend/views.py" />
         <option value="$PROJECT_DIR$/templates/home.html" />
       </list>
     </option>
@@ -528,11 +519,6 @@
         <state line="456" column="6" selection-start="16607" selection-end="16607" vertical-scroll-proportion="0.33174226" />
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/re.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="4" selection-start="8155" selection-end="8155" vertical-scroll-proportion="0.3327787" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myNotesBackend/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="6" selection-start="80" selection-end="80" vertical-scroll-proportion="0.0">
@@ -594,13 +580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myNotesBackend/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="67" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myNotesBackend/static/layout.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="211" column="8" selection-start="4215" selection-end="4215" vertical-scroll-proportion="0.0">
@@ -608,9 +587,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/re.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="143" column="4" selection-start="6849" selection-end="6849" vertical-scroll-proportion="0.3324937">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myNotesBackend/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="96" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="51" selection-start="6610" selection-end="6610" vertical-scroll-proportion="0.36235955">
+        <state line="64" column="55" selection-start="2309" selection-end="2309" vertical-scroll-proportion="0.4747191">
           <folding>
             <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#0;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
