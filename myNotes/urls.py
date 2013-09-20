@@ -14,6 +14,8 @@ urlpatterns = patterns('',
      url(r'^registration', 'myNotesBackend.views.registration'),
      url(r'^register', 'myNotesBackend.views.register'),
      url(r'^deletenote', 'myNotesBackend.views.delete_note'),
+     url(r'^filterbytag', 'myNotesBackend.views.filter_by_tag'),
+     url(r'^gettags', 'myNotesBackend.views.get_tags'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

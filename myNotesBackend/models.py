@@ -7,6 +7,9 @@ class Notes(models.Model):
     date = models.DateTimeField('date published')
     user = models.ForeignKey(User,null=True, blank=True)
 
-
+class Tags(models.Model):
+    tag = models.TextField()
+    counter = models.IntegerField()
+    user = models.ForeignKey(User, null=True, blank=True)
 
 # Create your models here.

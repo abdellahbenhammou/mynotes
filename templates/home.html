@@ -3,6 +3,8 @@
 <head>
     <title>MyNotes</title>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="/static/jquery.slimscroll.min.js"></script>
 
     <!-- Basic Page Needs
   ================================================== -->
@@ -51,30 +53,53 @@
 <b>This the home Page</b><br/>
 {% if user.is_authenticated %}
 <p style="display: inline">{{ username }}'s Profile</p>
-    <form method="post" id="addnote_form" name= "addnote" >
-    {% csrf_token %}
-    <input type="text" name="note" id="note" required="required"/>
-    <input type="submit" value="add"/>
-</form>
+
     <div class="band section">
 
-    <nav class="navigation">
+    <nav  id="#tags"  class="navigation"><div class="tags_scroll">
+
         <h1>By Tags</h1>
         <ul>
+{% comment %}        {% load my_template_filter %}
+            <li class="nav_tag"><a href="#">#all</a></li>
             {% for t in notes %}
-            <li class="selected"><a href="#">#{{ t.tags }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+
+                    {% with t.tags|split:"," as tags%}
+                        {% for tag in tags %}
+                            {% if tag and tag.strip %}
+                                <li class="selected nav_tag"><a href="#">#{{ tag }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endwith %}
+
+            {% endfor %}{% endcomment %}
+            <li class="nav_tag"><a href="#">#all</a></li>
+                {% for tag in tags %}
+
+                        <li class="selected nav_tag"><a href="#">#{{ tag.tag }}</a></li>
+
+                {% endfor %}
+
+          </ul>
+
+    </div></nav>
 <div id="content">
 
 
 
+    <div class="main-add-note">
+        <form method="post" id="addnote_form" name= "addnote" class="add_note_form" >
+        {% csrf_token %}
+            <img id="add-load" style="display: none; position: absolute; padding-left: 52%; padding-top: 1%; opacity: 0.5;" src="/static/add-load-dot.gif"/><input type="text" name="note" id="note" required="required" placeholder="Got a note to put...">
 
-    <section class="main-notes">
+            </input>
+        <input type="submit" value="Add Note" id="add"/>
+    </form></div>
+    <section id="current_notes" class="main-notes">
+        <div id="loading"  style='display:none'><img src="/static/gif-load.gif" /></div>
         <span id="notes"></span>
         {% for n in notes %}
-        <div id="row{{ n.id }}" class="note transparent"><p class="one_note" style="display: inline">{{ n.note }}</p><a href="#" id="{{ n.id }}" class="delete_note" style="float: right;"><img class="delete_note_"  data-id="{{ n.id }}" src="/static/delete.png"/></a></div>
+        <div id="row{{ n.id }}" class="note transparent"><p class="one_note" style="display: inline">{{ n.note|safe }}</p><a href="#" id="{{ n.id }}" class="delete_note" style="float: right;"><img class="delete_note_"  data-id="{{ n.id }}" src="/static/delete.png"/></a></div>
         {% endfor %}
     </section>
 
@@ -106,15 +131,75 @@
             return true;
         }
     }
-    $(".band section").on("click", ".one_note", function(evt) {
+    $(".band section").on("click", ".tag", function(evt) {
 
-            console.log($(this));
+            console.log($(this).text());
+        $('#loading').show();
+        $.ajax({ // create an AJAX call...
 
+            data: {'data': $(this).text()}, // get the form data
+            type: 'GET', // GET or POST
+            url: '/filterbytag', // the file to cal
+            success: function(response) { // on success..
+
+            console.log(response);
+                var n = jQuery.parseJSON(response);
+                console.log(n[0].pk);
+                var current_notes = $("#current_notes");
+                current_notes.empty();
+                var l = '<div id="loading" style="display:none"><img src="/static/gif-load.gif" /></div>';
+                for(var i=0; i< n.length; i++){
+                    l += '<div id="row'+ n[i].pk+'" class="note transparent"><p class="one_note" style="display: inline">'+ n[i].fields.note +'</p><a href="#" id='+n[i].pk +' class="delete_note" style="float: right;"><img class="delete_note_"  data-id="+n[i].pk +" src="/static/delete.png"/></a></div>';
+                }
+                current_notes.hide();
+                $('#loading').hide();
+                current_notes.html(l);
+                current_notes.fadeIn();
+
+
+
+            },
+            error: function(error){
+                alert(error);
+            }
+        });
 
 
     });
 
+    $(".nav_tag").on("click", "a", function(evt) {
+        $('#loading').show();
+        console.log($(this).text());
+        $.ajax({ // create an AJAX call...
+            data: {'data': $(this).text()}, // get the form data
+            type: 'GET', // GET or POST
+            url: '/filterbytag', // the file to cal
+            success: function(response) { // on success..
 
+                console.log(response);
+                var n = jQuery.parseJSON(response);
+                console.log(n[0].pk);
+                var current_notes = $("#current_notes");
+                current_notes.empty();
+                var l = '<span id="notes"></span><div id="loading"  style="display:none"><img src="/static/gif-load.gif" /></div>';
+                for(var i=0; i< n.length; i++){
+                    l += '<div id="row'+ n[i].pk+'" class="note transparent"><p class="one_note" style="display: inline">'+ n[i].fields.note +'</p><a href="#" id='+n[i].pk +' class="delete_note" style="float: right;"><img class="delete_note_"  data-id="+n[i].pk +" src="/static/delete.png"/></a></div>';
+                }
+                current_notes.hide();
+                $('#loading').hide();
+                current_notes.html(l);
+                current_notes.fadeIn();
+
+
+
+            },
+            error: function(error){
+                alert(error);
+            }
+        });
+
+
+    });
     $(".band section").on("click", ".delete_note", function(evt) { // catch the form's submit event
 
         var note_id = $(this).attr('id');
@@ -148,10 +233,34 @@
     });
 
     $(document).ready(function() {
+    $(function(){
+        $(".navigation").slimscroll({
+            height: '300px',
+            width: '210px'
+        });
+
+    });
+        /*var availableTags = [];
+        console.log('start..')
+        {% for t in tags %}
+            console.log('tag: ' + {{ t }});
+            availableTags.push({{ t }});
+        {% endfor %}
+        $(function() {
+            var availableTags = [];
+
+            {% for t in tags %}
+                console.log('tag: ' + {{ t }});
+            availableTags.push({{ t }});
+            {% endfor %}
+            $( "#note" ).autocomplete({
+                source: availableTags
+            });
+        });*/
 
 
-
-        $('#addnote_form').submit(function(evt) { // catch the form's submit event
+        $('#addnote_form').submit(function(evt) {
+            $("#add-load").show();              // catch the form's submit event
             $.ajax({ // create an AJAX call...
                 data: $(this).serialize(), // get the form data
                 type: 'POST', // GET or POST
@@ -159,6 +268,7 @@
                 success: function(response) { // on success..
                     var n = jQuery.parseJSON(response);
                     //alert(n.note);
+                    $("#add-load").hide();
                     $("#notes").append("<div id='row"+ n.id+"'"+" class='note transparent' style='display: none'><p class='one_note' style='display: inline'>"+n.note
                             +"</p><a id="+n.id+" href='#' class='delete_note' style='float: right;'><img class='delete_note_' data-id='{{ n.id }}' alt=' n.id '" +
                             " src='/static/delete.png'/></a></div>");
@@ -199,6 +309,33 @@
             });
             evt.preventDefault();
         });
+    $("#note").keyup(function(){
+
+        console.log('changed:- ' + $(this).val() + ' done');
+
+        $.ajax({ // create an AJAX call...
+            data: {'data': 'nothing'}, // get the form data
+            type: 'GET', // GET or POST
+            url: '/gettags', // the file to cal
+            success: function(response) {
+                // on success..
+                console.log('success: ' + response);
+                var n = jQuery.parseJSON(response);
+                var tags = [];
+                //console.log('the length: ' + n.length);
+                for(var i=0; i< n.length; i++){
+                    console.log('n[i]: '+ n[i]);
+                    tags.push(n[i]);
+                }
+
+            },
+            error: function(){
+                console.log('error');
+                //alert('error');
+            }
+        });
+
+    });
 
     });
 
