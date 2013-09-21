@@ -1,22 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>MyNotes Registration</title>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
 </head>
-<body>
-<p>The form</p>
-<form method="post" name="register" action="/register" >{% csrf_token %}
-    <label for="username">Username: </label><input name="username" type="text" id="username" required="required"/><br/>
-    <label for="email">Email: </label><input name="email" type="email" id="email" required="required"/><br/>
-    <label for="password">Password: </label><input name="password" type="password" id="password" min="6" required="required"/><br/>
-    <button type="submit">Submit</button>
-</form>
+<body class="container">
+<div class="span4 offset2" style="margin-top: 10%; width:570px;">
+<form method="post" class="form-horizontal" name="register" action="/register">{% csrf_token %}
+        <fieldset>
+            <div id="legend">
+                <legend class="">Register</legend>
+            </div>
+            <div class="control-group">
+                <!-- Username -->
+                <label class="control-label"  for="username">Username</label>
+                <div class="controls">
+                    <input type="text" id="username" name="username" placeholder="username" required="required" class="input-xlarge">
+                    <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- E-mail -->
+                <label class="control-label" for="email">E-mail</label>
+                <div class="controls">
+                    <input type="text" id="email" name="email" placeholder="" required="required" class="input-xlarge">
+                    <p class="help-block">Please provide your E-mail</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Password-->
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                    <input type="password" id="password" name="password" placeholder="password" min="6" required="required" class="input-xlarge">
+                    <p class="help-block">Password should be at least 4 characters</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Password -->
+                <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+                <div class="controls">
+                    <input type="password" id="password_confirm" name="password_confirm" placeholder="confirm password" min="6" required="required" class="input-xlarge">
+                    <p class="help-block">Please confirm password</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Button -->
+                <div class="controls">
+                    <button class="btn btn-success">Register</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
 <script>
     $.ajax({
         url: "/addnote",
         context: document.body
-    }).done(function(){
+    }).done(function () {
                 $(this).
             })
 
