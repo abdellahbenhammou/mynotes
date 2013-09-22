@@ -53,8 +53,9 @@
     </header>
 </div>
 <!-- end band header -->
-<b>This the home Page</b><br/>
+
 {% if user.is_authenticated %}
+    <b>This the home Page</b><br/>
     <p style="display: inline">{{ username }}'s Profile</p>
 
     <div class="band section">
@@ -110,8 +111,11 @@
     </div>
 
 {% else %}
-    <div class="not_in" style="background-image: url('/static/notes.jpg'); height: 100%">
-    <a href="/login">Login - </a><a href="/registration">Register</a><br/>
+    <div class="not_in" style=" height: 100%">
+        <b>This the home Page</b><br/>
+        <div class="log_reg">
+    <a href="/login">Login</a> - <a href="/registration">Register</a><br/>
+        </div>
 
     </div>
 {% endif %}

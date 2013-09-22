@@ -7,7 +7,7 @@
     <file path="/models.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379505219724" ignored="false" />
     <file path="/views.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379704913218" ignored="false" />
     <file path="/Dummy.txt" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1378765664464" ignored="false" />
-    <file path="/home.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379807044015" ignored="false" />
+    <file path="/home.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379809936668" ignored="false" />
     <file path="/urls.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379702404812" ignored="false" />
     <file path="/registration.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379781491296" ignored="false" />
     <file path="/settings.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379197993920" ignored="false" />
@@ -19,7 +19,7 @@
     <file path="/a.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379260652494" ignored="false" />
     <file path="/start_script.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379260683455" ignored="false" />
     <file path="/index.html" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379277050114" ignored="false" />
-    <file path="/layout.css" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379805518057" ignored="false" />
+    <file path="/layout.css" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379809981040" ignored="false" />
     <file path="/my_template_filter.py" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379348001991" ignored="false" />
     <file path="/jquery.slimscroll.min.js" changelist="09a1cb33-65e8-4c26-ba3d-2e1ad3b166b1" time="1379700588784" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="home.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="100" selection-start="5753" selection-end="5753" vertical-scroll-proportion="0.38">
+            <state line="116" column="31" selection-start="4632" selection-end="4632" vertical-scroll-proportion="-3.4615386">
               <folding>
                 <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -99,10 +99,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="layout.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myNotesBackend/static/layout.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="17" selection-start="1736" selection-end="1736" vertical-scroll-proportion="-22.68">
+            <state line="68" column="21" selection-start="1985" selection-end="1985" vertical-scroll-proportion="0.87281793">
               <folding />
             </state>
           </provider>
@@ -132,8 +132,8 @@
         <option value="$PROJECT_DIR$/myNotesBackend/views.py" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/registration.html" />
-        <option value="$PROJECT_DIR$/myNotesBackend/static/layout.css" />
         <option value="$PROJECT_DIR$/templates/home.html" />
+        <option value="$PROJECT_DIR$/myNotesBackend/static/layout.css" />
       </list>
     </option>
   </component>
@@ -604,16 +604,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myNotesBackend/static/layout.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="17" selection-start="1736" selection-end="1736" vertical-scroll-proportion="-22.68">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="100" selection-start="5753" selection-end="5753" vertical-scroll-proportion="0.38">
+        <state line="116" column="31" selection-start="4632" selection-end="4632" vertical-scroll-proportion="-3.4615386">
           <folding>
             <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -629,6 +622,13 @@
             <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myNotesBackend/static/layout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="21" selection-start="1985" selection-end="1985" vertical-scroll-proportion="0.87281793">
+          <folding />
         </state>
       </provider>
     </entry>

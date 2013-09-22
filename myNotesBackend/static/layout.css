@@ -46,6 +46,28 @@ body{
 
 
  }
+.not_in{
+
+    background: url("/static/notes_1.jpg");
+    background-size:  cover;
+
+}
+
+.log_reg{
+    position: absolute;
+    margin-top: 15%;
+    margin-left: 65%;
+    font-size: 40px;
+    font-style: italic;
+    color: #f5f5f5;
+
+}
+.log_reg a{
+    color: #f5f5f5;
+}
+.log_reg a:hover{
+    color: slategray;
+}
 
 .clearfix{
 	float: none;
@@ -81,7 +103,7 @@ body{
 .band.footer{
 	background: #226c9e;
 	height: 40px;
-	margin-top: 20px;
+	marg-in-top: 20px;
 }
 
 .band.footer footer p{
