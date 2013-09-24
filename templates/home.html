@@ -42,12 +42,14 @@
     <header>
         <div class="logo-container"><h1>The Logo</h1></div>
         <div class="search-container">
-            <a href="/logout">Logout </a>
+	{% if user.is_authenticated %}
+            <a href="/mynotes/logout">Logout </a>
             <form action="" method="" id="search-form">
                 <label for="search-input">Search</label>
                 <input type="text" name="s" id="search-input" placeholder="look for my notes">
                 <input type="submit" value="search" id="search-submit">
             </form>
+	{% endif %}
         </div>
         <div class="clearfix"></div>
     </header>
@@ -59,7 +61,6 @@
     <p style="display: inline">{{ username }}'s Profile</p>
 
     <div class="band section">
-
     <nav id="#tags" class="navigation sidebar-nav" style="overflow-y: scroll;">
         <div class="tags_scroll">
 
@@ -114,7 +115,7 @@
     <div class="not_in" style=" height: 100%">
         <b>This the home Page</b><br/>
         <div class="log_reg">
-    <a href="/login">Login</a> - <a href="/registration">Register</a><br/>
+    <a href="/mynotes/login">Login</a> - <a href="/mynotes/registration">Register</a><br/>
         </div>
 
     </div>
@@ -149,7 +150,7 @@ $(".band section").on("click", ".tag", function (evt) {
 
         data: {'data': $(this).text()}, // get the form data
         type: 'GET', // GET or POST
-        url: '/filterbytag', // the file to cal
+        url: '/mynotes/filterbytag', // the file to cal
         success: function (response) { // on success..
 
             console.log(response);
@@ -183,7 +184,7 @@ $(".nav_tag").on("click", "a", function (evt) {
     $.ajax({ // create an AJAX call...
         data: {'data': $(this).text()}, // get the form data
         type: 'GET', // GET or POST
-        url: '/filterbytag', // the file to cal
+        url: '/mynotes/filterbytag', // the file to cal
         success: function (response) { // on success..
 
             //console.log(response);
@@ -219,7 +220,7 @@ $(".band section").on("click", ".delete_note", function (evt) { // catch the for
     $.ajax({ // create an AJAX call...
         data: {'data': note_id}, // get the form data
         type: 'GET', // GET or POST
-        url: '/deletenote', // the file to cal
+        url: '/mynotes/deletenote', // the file to cal
         success: function (response) { // on success..
             var n = jQuery.parseJSON(response);
             //alert('response: '+ n.note);
@@ -296,7 +297,7 @@ $(document).ready(function () {
         $.ajax({ // create an AJAX call...
             data: $(this).serialize(), // get the form data
             type: 'POST', // GET or POST
-            url: '/addnote', // the file to cal
+            url: '/mynotes/addnote', // the file to cal
             success: function (response) { // on success..
                 var n = jQuery.parseJSON(response);
                 //alert(n.note);
@@ -321,7 +322,7 @@ $(document).ready(function () {
         $.ajax({ // create an AJAX call...
             data: {'data': note_id}, // get the form data
             type: 'GET', // GET or POST
-            url: '/deletenote', // the file to cal
+            url: '/mynotes/deletenote', // the file to cal
             success: function (response) { // on success..
                 var n = jQuery.parseJSON(response);
                 //alert('response: '+ n.note);
@@ -350,7 +351,7 @@ $(document).ready(function () {
         $.ajax({ // create an AJAX call...
             data: {'data': 'nothing'}, // get the form data
             type: 'GET', // GET or POST
-            url: '/gettags', // the file to cal
+            url: '/mynotes/gettags', // the file to cal
             success: function (response) {
                 // on success..
                 //console.log('success: ' + response);

@@ -28,7 +28,7 @@ def home(request):
 
 def register(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/mynotes')
     elif request.method == 'GET':
         c = {}
         c.update(csrf(request))
@@ -66,7 +66,7 @@ def registration(request):
 
 def login(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/mynotes")
     c = {}
     c.update(csrf(request))
     return render_to_response("login.html", c)
@@ -77,9 +77,9 @@ def auth_view(request):
     user = authenticate(username=username, password=password)
     if user is not None:
         auth.login(request, user)
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/mynotes')
     else:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/mynotes')
 
 
 def logout(request):
@@ -134,9 +134,9 @@ def addnote(request):
             print 'new note: ' + new_note.note
             return HttpResponse(json.dumps({'note': new_note.note, 'id': new_note.id}))
         else:
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/mynotes')
     else:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/mynotes')
             #new_note.save()
 
 def delete_note(request):
@@ -180,7 +180,7 @@ def filter_by_tag(request):
         print 'after json: ' + str(notes)
         return HttpResponse(notes)
     else:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/mynotes')
 
 def get_tags(request):
     print 'getting tags...'
