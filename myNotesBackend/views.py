@@ -23,9 +23,26 @@ def home(request):
         return render_to_response("home.html",{'username': request.user.username, 'notes': notes, 'tags': tags}, context_instance=RequestContext(request))
     else:
         print 'not in'
-        return render_to_response("home.html", {'username': request.user.username})
+        c = {}
+        c.update(csrf(request))
+        return render_to_response("login.html", c)
 
-
+@csrf_exempt
+def validate_user(request):
+    if request.user.is_authenticated and request.is_ajax() and request.POST:
+        username = request.POST.get('username', 'abdellah')
+        print 'the username: ' + username
+        user = User.objects.filter(username=username).count()
+        if user > 0:
+            print 'exist: ' + str(user)
+            j = json.dumps('{"data": "exist"}')
+            j = json.loads(j)
+            return HttpResponse(j)
+        else:
+            print 'not_exist: ' + str(user)
+            j = json.dumps('{"data": "not_exist"}')
+            j = json.loads(j)
+            return HttpResponse(j)
 def register(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/mynotes')
@@ -38,8 +55,14 @@ def register(request):
         user_form = UserCreationForm(request.POST or None)
         if request.method == 'POST':
             print 'those are the values: ' + request.POST['username'] + ' ** ' + request.POST['email'] + ' ** ' + request.POST['password']
+            username = request.POST.get('username', 'abdellah')
+            print 'the username: ' + username
+            user = User.objects.filter(username=username).count()
+            if user > 0:
+                return HttpResponseRedirect("/mynotes/registration")
             user = User.objects.create_user(username=request.POST.get('username'), email=request.POST.get('email'), password=request.POST.get('password'))
             user.save()
+
             user = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
             if user is not None:
                 auth.login(request, user)
@@ -79,12 +102,12 @@ def auth_view(request):
         auth.login(request, user)
         return HttpResponseRedirect('/mynotes')
     else:
-        return HttpResponseRedirect('/mynotes')
+        return render_to_response("login.html",{'data': 'wrongPass'})
 
 
 def logout(request):
     auth.logout(request)
-    return render_to_response("home.html",{'username': request.user.username}, context_instance=RequestContext(request))
+    return render_to_response("login.html",{'username': request.user.username}, context_instance=RequestContext(request))
 
 @csrf_exempt
 def addnote(request):

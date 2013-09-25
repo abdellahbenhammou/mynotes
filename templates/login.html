@@ -10,10 +10,13 @@
     <div class="span4 offset4">
         <div class="well" style="background: white">
             <legend>Please sign in</legend>
-            <div class="alert alert-error">
-                <a class="close" data-dismiss="alert" href="#">x</a>Incorrect Username or Password!
-            </div>
-            <form method="POST" action="/mynotes/auth">{% csrf_token %}
+            {% ifequal data "wrongPass" %}
+                <div class="alert alert-error">
+                    <a class="close" data-dismiss="alert" href="#">x</a>Incorrect Username or Password!
+                </div>
+            {% endifequal %}
+
+            <form method="POST" action="/mynotes/auth" >{% csrf_token %}
 
 
               <input type="text" name="username" placeholder="username.." class="span3">
@@ -23,8 +26,9 @@
                 <input type="password" name="password" placeholder="password.." class="span3">
 
 
-                <input type="submit" value="Login" class="btn-primary btn"/>
+                <input type="submit" value="Login" class="btn-primary btn" style="width:85%;"/>
             </form>
+       <form action="/mynotes/registration" style=""><input style="width:85%;" value="Register" type="submit" class="btn-inverse btn"/></form>
         </div>
     </div>
 </div>

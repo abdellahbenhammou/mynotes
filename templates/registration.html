@@ -17,8 +17,9 @@
                 <!-- Username -->
                 <label class="control-label"  for="username">Username</label>
                 <div class="controls">
-                    <input type="text" id="username" name="username" placeholder="username" required="required" class="input-xlarge">
+                    <input type="text" id="username" name="username" placeholder="username" required="required" class="input-xlarge" autocomplete="off">
                     <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+                    <p id="uservalidation" class="help-block" style="color: red; display: none">Username already used</p>
                 </div>
             </div>
 
@@ -52,21 +53,68 @@
             <div class="control-group">
                 <!-- Button -->
                 <div class="controls">
-                    <button class="btn btn-success">Register</button>
+                    <button id="register"  class="btn btn-success" disabled="disabled" style="">Register</button>
                 </div>
             </div>
         </fieldset>
     </form>
 </div>
 <script>
-    $.ajax({
-        url: "/addnote",
-        context: document.body
-    }).done(function () {
-                $(this).
-            })
+
+    $("#username").keyup(function(){
+        console.log("tata" + $(this).val());
+        $.ajax({
+            data: {'username': $(this).val()}, // get the form data
+            type: 'POST', // GET or POST
+            url: 'validateusername/', // the file to cal
+            success: function (response) {
+                // on success..
+                //console.log('success: ' + response);
+                var n = jQuery.parseJSON(response);
 
 
+                if(n.data == "exist"){
+                    $("#uservalidation").show();
+                    console.log("answer: " + n.data);
+                }
+                else{
+                    $("#uservalidation").hide();
+                    console.log("answer1: " + n.data);
+                }
+
+            },
+            error: function () {
+                console.log('error');
+                //alert('error');
+            }
+        });
+    });
+
+    $("#password_confirm").keyup(
+        function(){
+        console.log('conf: ' + $(this).val());
+        console.log('pass: ' + $("#password").val());
+        var pass = $("#password").val();
+        if(pass == $(this).val()){
+            $("#register").removeAttr("disabled");
+        }
+        else{
+            $("#register").attr('disabled','disabled');
+        }
+    });
+
+    $("#password").keyup(
+            function(){
+                console.log('conf: ' + $(this).val());
+                console.log('pass: ' + $("#password_confirm").val());
+                var pass = $("#password_confirm").val();
+                if(pass == $(this).val()){
+                    $("#register").removeAttr("disabled");
+                }
+                else{
+                    $("#register").attr('disabled','disabled');
+                }
+            });
 </script>
 </body>
 </html>
