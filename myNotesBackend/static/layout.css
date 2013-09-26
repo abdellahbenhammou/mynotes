@@ -337,3 +337,8 @@ body{
 	filter: alpha(opacity=50);
 	opacity: 0.5;
 }
+.date_note{
+    float: right;
+    margin-right: 5px;
+    margin-top: -2px;
+}

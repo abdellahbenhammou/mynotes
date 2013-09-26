@@ -101,11 +101,17 @@
             <span id="notes"></span>
             {% for n in notes %}
                 <div id="row{{ n.id }}" class="note transparent"><p class="one_note"
-                                                                    style="display: inline">{{ n.note|safe }}</p><a
-                        href="#" id="{{ n.id }}" class="delete_note" style="float: right;"><img class="delete_note_"
+                                                                    style="display: inline">{{ n.note|safe }}</p>
+                    <a
+                        href="#" id="{{ n.id }}" title="delete" class="delete_note" style="float: right;"><img class="delete_note_"
                                                                                                 data-id="{{ n.id }}"
                                                                                                 src="/static/delete.png"/></a>
+                    <a
+                            href="#" title="{{ n.date }}" class="date_note" style="float: right; margin-right: 5px; margin-top: -2px"> <img class="date_note_"
+                                                                                              data-id="{{ n.id }}"
+                                                                                              src="/static/time_1.png"/></a>
                 </div>
+
             {% endfor %}
         </div>
         </section>
@@ -127,7 +133,7 @@
 <div class="band footer" style="bottom: 0; width:100%;">
 
     <footer>
-        <p>2013 &copy; MyNotes. All Right Reserved</p>
+        <p>2013 &copy; MyNotes. All Right Reserved    <a href="mailto:my.abdellah.benhammou@gmail.com" title="contact me" style="color: #000000">Abdellah Ben Hammou</a></p>
     </footer>
 
 </div>
@@ -306,7 +312,8 @@ $(document).ready(function () {
                 $("#add-load").hide();
                 $("#notes").append("<div id='row" + n.id + "'" + " class='note transparent' style='display: none'><p class='one_note' style='display: inline'>" + n.note
                         + "</p><a id=" + n.id + " href='#' class='delete_note' style='float: right;'><img class='delete_note_' data-id='{{ n.id }}' alt=' n.id '" +
-                        " src='/static/delete.png'/></a></div>");
+                        " src='/static/delete.png'/></a><a title='"+ n.date +"' href='#' class='date_note' style='float: right;'><img class='delete_note_' data-id='{{ n.id }}' alt=' n.id '" +
+                        " src='/static/time_1.png'/></a></div>");
 
                 $("#row" + n.id).slideDown();
 

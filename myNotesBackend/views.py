@@ -155,7 +155,7 @@ def addnote(request):
             c.update(csrf(request))
             new_note.save()
             print 'new note: ' + new_note.note
-            return HttpResponse(json.dumps({'note': new_note.note, 'id': new_note.id}))
+            return HttpResponse(json.dumps({'note': new_note.note, 'id': new_note.id, 'date': str(time)}))
         else:
             return HttpResponseRedirect('/mynotes')
     else:
