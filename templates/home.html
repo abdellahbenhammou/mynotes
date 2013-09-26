@@ -66,13 +66,15 @@
 
             <h1>T#gs</h1>
             <ul>
-                <li class="nav_tag" style="cursor: pointer"><a href="#" style="display: block">#all</a></li>
+                <li id=""  class="nav_tag" style="cursor: pointer"><a href="#" style="display: block">#all</a></li>
+
                 {% for tag in tags %}
 
                     <li class="nav_tag" style="cursor: pointer"><a href="#" style="display: block">#{{ tag.tag }}</a></li>
 
                 {% endfor %}
-
+                <p></p>
+                <p id="nav_tag_all" ></p>
             </ul>
 
         </div>
@@ -308,6 +310,23 @@ $(document).ready(function () {
 
                 $("#row" + n.id).slideDown();
 
+                var s = $("#note").val();
+                var reg = s.match("#(\\w+|\\W+)");
+                var tags = reg[0].split(" ");
+
+                var words = $("#note").val();
+                var tagslistarr = words.split(' ');
+                var arr=[];
+                $.each(tagslistarr,function(i,val){
+                    if(tagslistarr[i].indexOf('#') == 0){
+                        arr.push(tagslistarr[i]);
+                    }
+                });
+
+                for(var i = 0; i <arr.length; i++){
+                    console.log("the tags: " + arr[i]);
+                    $("#nav_tag_all").append('<li class="nav_tag" style="cursor: pointer"><a href="#" style="display: block">'+arr[i]+'</a></li>');
+                }
                 $("#note").val("");
 
             }
