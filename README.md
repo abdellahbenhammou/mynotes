@@ -2,6 +2,7 @@ mynotes
 =======
 
 A  simple note taking application with a little touch of hash-tags.
+public url: www.dabanit.com/mynotes
 
 I have written this as a learning opportunity for me to use Django user authentication(not fully) and to get more 
 used to end-to-end development. So far, the app doesn't do much but I am still working on it. I am pushing most of
